@@ -17,6 +17,14 @@ def configLogs():
     )
     error_log_handler.setFormatter(error_log_formatter)
 
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+    console_handler_formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    console_handler.setFormatter(console_handler_formatter)
+
     root = logging.getLogger()
-    root.addHandler(default_handler)
+    root.setLevel(logging.DEBUG)
     root.addHandler(error_log_handler)
+    root.addHandler(console_handler)

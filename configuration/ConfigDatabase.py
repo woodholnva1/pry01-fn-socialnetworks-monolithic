@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 class ConfigDatabase:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join('formularios.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_ECHO = False
 
     def __init__(self):
         self.engine = create_engine(self.SQLALCHEMY_DATABASE_URI, echo=self.SQLALCHEMY_ECHO)
