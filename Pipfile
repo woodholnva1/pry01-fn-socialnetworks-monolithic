@@ -5,12 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
-lock = "*"
-pydantic = "*"
 sqlalchemy = "*"
+pydantic = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
-python_full_version = "3.8.10"
+python_version = "3.12"

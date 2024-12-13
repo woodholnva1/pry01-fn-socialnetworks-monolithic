@@ -1,13 +1,11 @@
-import os
-from sqlite3 import OperationalError
-from sqlalchemy import create_engine
 from flask import Flask
 
 from configuration.ConfigDatabase import ConfigDatabase
 from configuration.LoggerConfig import configLogs
 from views.MainViews import main_bp
 
-def runApp():
+
+def RunApp():
     app = Flask(__name__)
 
     # Registrar Vistas del Controller Views
@@ -23,9 +21,10 @@ def runApp():
 
     return app
 
+
 # Inicio to APP
 if __name__ == '__main__':
-    app = runApp()
+    app = RunApp()
     # Configuracion Correcta Inicia la Aplicacion
     if app:
         app.run(debug=True)
