@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app
+from flask import Blueprint
 
 from services.ServicesMain import ServicesMain
 
