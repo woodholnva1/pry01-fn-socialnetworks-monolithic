@@ -7,6 +7,23 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
+class HoraRede(Base):
+    __tablename__ = 'hora_redes'
+
+    id_horas_redes = Column(Integer, primary_key=True)
+    descripcion = Column(Text)
+    status = Column(Integer)
+
+
+class RedesSociale(Base):
+    __tablename__ = 'redes_sociale'
+
+    id_red_social = Column(Integer, primary_key=True)
+    name = Column(Text, nullable=False)
+    descripcion = Column(Text)
+    status = Column(Integer)
+
+
 class RegistroForm(Base):
     __tablename__ = 'registro_form'
 
@@ -20,6 +37,14 @@ class RegistroForm(Base):
     TmpInsta = Column(Text, nullable=False)
     Tmptiktok = Column(Text, nullable=False)
     sexo = Column(Text, nullable=False)
+
+
+class Sexo(Base):
+    __tablename__ = 'sexo'
+
+    id_sexo = Column(Integer, primary_key=True)
+    name = Column(Text)
+    descripcion = Column(Text)
 
 
 t_sqlite_sequence = Table(

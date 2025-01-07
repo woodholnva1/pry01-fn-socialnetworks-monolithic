@@ -40,7 +40,7 @@
 
 <body>
 
-  <div class="col-lg-8 mx-auto p-1   py-md-4">
+  <div class="col-lg-10 mx-auto p-1   py-md-4">
 
     <div class="">
       <header class="d-flex align-items-center pb-2 mb-0 border-bottom">
@@ -57,89 +57,188 @@
     </div>
 
     <!-- As a link Container-->
-    <div class="">
-      <nav class="navbar navbar-expand">
-        <a class="navbar-brand" href="#">Inicio</a>
-        <a class="nav-link" href="/verEstadisticas.html">Ver Estadisticas</a>
-      </nav>
+    <div class="mt-3 mb-3">
+      <!-- Tab Menu nav -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+            role="tab" aria-controls="home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">Estadisticas</button>
+        </li>
+      </ul>
     </div>
+
     <!-- Nav Bar Menu -->
 
 
     <main>
-      <!-- Contenido To Inicio -->
-      <div class="row">
-        <h2>Bienvenidos a al cuestionario de uso de redes sociales!</h2>
-      </div>
 
-      <div class="row text-justify">
-        <div class="col">
-          <div class="card mt-3">
-            <div class="card-header">
-              ¿Quieres saber mas sobre las redes sociales?
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+
+          <!-- Contenido To Inicio -->
+          <div class="row">
+            <h2>Bienvenidos a al cuestionario de uso de redes sociales!</h2>
+          </div>
+
+          <div class="row text-justify">
+            <div class="col-5">
+              <div class="card mt-3">
+                <div class="card-header">
+                  ¿Quieres saber mas sobre las redes sociales?
+                </div>
+                <div class="card-body">
+                  <p class="text-justify">
+                    Instagram, Facebook o Twitter son solo algunas de las plataformas de redes sociales más famosas que
+                    existen en este siglo. Miles de millones de personas han estado usando las redes sociales
+                    desde el momento de su aparición. ¿Alguna vez te has preguntado cómo empezó todo? ¿Quién fue el
+                    fundador?
+                    ¿Cómo ha evolucionado?
+                  </p>
+
+                  <p class="text-justify">
+                    Al analizar la historia de las redes sociales, muchos consideran que "Six Degrees.com" fue la
+                    primera
+                    web de
+                    redes sociales. Creada en Nueva York en 1997 (por el CEO Andrew Weinreich), incluía listas de amigos
+                    y
+                    familiares, así como afiliación escolar. Aunque probablemente no se consideró un "medio social" en
+                    relación
+                    a
+                    las redes sociales actuales, sí dio los primeros pasos para la tecnología de comunicación digital
+                    que
+                    hicieron
+                    posible posteriormente las redes sociales. Six Degrees estuvo activo hasta 2001 y se basó en el
+                    modelo
+                    de
+                    red
+                    social de la Web de Contactos.
+                  </p>
+
+                  <p class="text-justify">
+                    Pero lo cierto es que tenemos que remontarnos un poco antes. Tom Truscott y Jim Ellis mencionaron
+                    por
+                    primera
+                    vez la red Usenet en 1979. Usenet permitía publicar publicaciones de noticias o artículos en grupos
+                    de
+                    noticias. Los sistemas Usenet fueron los responsables de la evolución de los clientes lectores de
+                    noticias.
+                    Y
+                    también son los precursores de los lectores de fuentes RSS.
+
+                    Después llegarían los sistemas de tablón de anuncios (BBS), una de las primeras formas de las redes
+                    sociales
+                    a
+                    fines de los años setenta. Solo eran accesibles por una persona a la vez, pero permitía a los
+                    usuarios
+                    iniciar
+                    sesión y conectarse entre sí. Siguió siendo famoso hasta finales de la década de 1990.
+                  </p>
+
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-              <p class="text-justify">
-                Instagram, Facebook o Twitter son solo algunas de las plataformas de redes sociales más famosas que
-                existen en este siglo. Miles de millones de personas han estado usando las redes sociales
-                desde el momento de su aparición. ¿Alguna vez te has preguntado cómo empezó todo? ¿Quién fue el
-                fundador?
-                ¿Cómo ha evolucionado?
-              </p>
 
-              <p class="text-justify">
-                Al analizar la historia de las redes sociales, muchos consideran que "Six Degrees.com" fue la primera
-                web de
-                redes sociales. Creada en Nueva York en 1997 (por el CEO Andrew Weinreich), incluía listas de amigos y
-                familiares, así como afiliación escolar. Aunque probablemente no se consideró un "medio social" en
-                relación
-                a
-                las redes sociales actuales, sí dio los primeros pasos para la tecnología de comunicación digital que
-                hicieron
-                posible posteriormente las redes sociales. Six Degrees estuvo activo hasta 2001 y se basó en el modelo
-                de
-                red
-                social de la Web de Contactos.
-              </p>
 
-              <p class="text-justify">
-                Pero lo cierto es que tenemos que remontarnos un poco antes. Tom Truscott y Jim Ellis mencionaron por
-                primera
-                vez la red Usenet en 1979. Usenet permitía publicar publicaciones de noticias o artículos en grupos de
-                noticias. Los sistemas Usenet fueron los responsables de la evolución de los clientes lectores de
-                noticias.
-                Y
-                también son los precursores de los lectores de fuentes RSS.
+            <div class="col">
+              <div class="card mt-3">
+                <div class="card-header">
+                  Test redes Sociales!
+                </div>
+                <div class="card-body">
 
-                Después llegarían los sistemas de tablón de anuncios (BBS), una de las primeras formas de las redes
-                sociales
-                a
-                fines de los años setenta. Solo eran accesibles por una persona a la vez, pero permitía a los usuarios
-                iniciar
-                sesión y conectarse entre sí. Siguió siendo famoso hasta finales de la década de 1990.
-              </p>
+                  <form>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="mb-3">
+                          <label for="years" class="form-label">Rango de edad</label>
+                          <select class="form-select form-select-sm" aria-label="Small select example" id="years">
+                            <option selected>Open this select menu</option>
+                            {%for i in data.years%}
+                            <option value="{{i}}">{{i}}</option>
+                            {%endfor%}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="mb-3">
+                          <label for="sex" class="form-label">Sexo</label>
+                          <select class="form-select form-select-sm" aria-label="Small select example" id="sex">
+                            <option selected>Open this select menu</option>
+                            {%for i in data.sexos%}
+                            <option value="{{i.id_sexo}}">{{i.name}}</option>
+                            {%endfor%}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="mb-3">
+                          <label for="favorite_red" class="form-label">Red social Favorita</label>
+                          <select class="form-select form-select-sm" aria-label="Small select example"
+                            id="favorite_red">
+                            <option selected>Open this select menu</option>
+                            {%for i in data.redes%}
+                            <option value="{{i.id_red_social}}">{{i.name}}</option>
+                            {%endfor%}
+                          </select>
+                        </div>
+                      </div>
 
+                      <div class="col-12 mt-3">
+                        <div class="card ">
+                          <div class="card-header">Indica el tiempo que usas cada red Social, en caso de no usarla
+                            dejala
+                            en blanco o indica no la uso!</div>
+                          <div class="card-body">
+                            <div class="row">
+                              {%for i in data.redes%}
+                              <!-- Redes Sociales -->
+                              <div class="col-3">
+                                <div class="mb-3">
+                                  <label for="{{i.name}}" class="form-label">{{i.name}}</label>
+                                  <select class="form-select form-select-sm" aria-label="Small select example"
+                                    id="{{i.name}}">
+                                    <option selected>Open this select menu</option>
+                                    {%for red_hrs in data.horas_redes%}
+                                    <option value={{red_hrs.id_horas_redes}}>{{red_hrs.descripcion}}</option>
+                                    {%endfor%}
+                                  </select>
+                                </div>
+                              </div>
+                              {%endfor%}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 mt-3 align-text-top text-center ">
+                        <div >
+                          <button type="button" class="btn btn-outline-success">Enviar Formulario!</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- Inicio del Formulario para la Encuesta! -->
+
+              <!-- Inicio del Formulario para la Encuesta! -->
             </div>
           </div>
         </div>
-
-
-        <div class="col">
-          <div class="card mt-3">
-            <div class="card-header">
-              Formulario para la encuesta!
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <!-- Inicio del Formulario para la Encuesta! -->
-
-          <!-- Inicio del Formulario para la Encuesta! -->
-        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> Ventana 2</div>
       </div>
+
     </main>
     <footer class="pt-2 my-3 text-muted border-top">
       Created by Develop Freddy Nava &middot; &copy; 2025
