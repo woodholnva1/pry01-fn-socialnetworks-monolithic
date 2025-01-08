@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 
 from services.ServicesMain import ServicesMain
 
@@ -15,10 +15,15 @@ class MainView:
 
     def register_routes(self):
         self.blueprint.add_url_rule('/', 'index', self.index)
+        self.blueprint.add_url_rule('/api/verifyMail', 'verifyMail', self.verifyMail, methods=["GET"])
+
 
     # Main Page
     def index(self):
         return self.servicesMain.index()
+
+    def verifyMail(self):
+        return self.servicesMain.verifyMail(request.args.get('mail'))
 
 
 MainView(main_bp)

@@ -31,12 +31,17 @@
         font-size: 3.5rem;
       }
     }
+
+    .errorMessage {
+      color: green;
+    }
   </style>
 
 
   <!-- Custom styles for this template -->
   <link href="starter-template.css" rel="stylesheet">
 </head>
+
 
 <body>
 
@@ -155,9 +160,10 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                          <label for="mailInput" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="mailInput" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text errorMessage">We'll never share your email with anyone
+                            else.</div>
                         </div>
                       </div>
                       <div class="col-3">
@@ -222,7 +228,7 @@
                         </div>
                       </div>
                       <div class="col-12 mt-3 align-text-top text-center ">
-                        <div >
+                        <div>
                           <button type="button" class="btn btn-outline-success">Enviar Formulario!</button>
                         </div>
                       </div>
@@ -246,5 +252,47 @@
   </div>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<script>
+  const errorMessage = document.getElementById('emailHelp');
+  function validateEmail(email) {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  // Funcion para Verificar el correo si ya Existe
+  URL_VAR = "http://127.0.0.1:5000/api"
+  const mailInput = document.getElementById("mailInput");
+  mailInput.addEventListener("input", verificarValor);
+
+
+  // Verificar el valor Escrito en el Input
+  function verificarValor(e) {
+    const cadenaMail = e.target.value;
+
+    // Varificar Correo
+    if (validateEmail(cadenaMail)) {
+      fetch(URL_VAR + "/verifyMail?mail=" + cadenaMail)
+        .then(response => response.json().then(data => {
+          console.log(data);
+          if (response.status === 200) {
+            errorMessage.textContent = data.message;
+            errorMessage.style.color = "green";
+          } else {
+            errorMessage.textContent = data.message;
+            errorMessage.style.color = "red";
+          }
+        }))
+        .catch(error => {
+          console.error("Error al verificar el correo:", error);
+          errorMessage.textContent = "Error al Verificar el Correo, Intente nuevamente!"
+          errorMessage.style.color = "red";
+        });
+
+    } else {
+      errorMessage.textContent = "El correo ingresado es Invalido!"
+      errorMessage.style.color = "red";
+    }
+  }
+</script>
 
 </html>
