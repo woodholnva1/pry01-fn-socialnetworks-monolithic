@@ -229,7 +229,8 @@
                       </div>
                       <div class="col-12 mt-3 align-text-top text-center ">
                         <div>
-                          <button type="button" class="btn btn-outline-success">Enviar Formulario!</button>
+                          <button type="button" onclick="registrarFormulario()" class="btn btn-outline-success">Enviar
+                            Formulario!</button>
                         </div>
                       </div>
                     </div>
@@ -293,6 +294,49 @@
       errorMessage.style.color = "red";
     }
   }
+
+
+  // ---------------------------------------------------
+  // Obtener datos del Formulario y Enviar
+  // ---------------------------------------------------
+  function registrarFormulario() {
+    var arrayRedes = [];
+    {% for red in data.redes %}
+    arrayRedes.push({
+      id_red: "{{ red.id_red_social }}",
+      value: document.getElementById("{{ red.name }}").value,
+    });
+    {% endfor %}
+    console.log(arrayRedes);
+
+    // Obtener Primera parte del Input Valores
+    let valoresRequerdiso = {
+      mail: document.getElementById("mailInput").value,
+      years: document.getElementById("years").value,
+      favorite_network: document.getElementById("favorite_red").value,
+      sex: document.getElementById("sex").value,
+      redes_sociales: arrayRedes
+    };
+
+    // --------------------------------------------------------
+    // Enviar Valores al Endpoint Registrar Encuesta!
+    // --------------------------------------------------------
+    fetch(URL_VAR + '/RegisterSurvey', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(valoresRequerdiso)
+    })
+      .then(response => response.json().then(data => {
+        console.log(data);
+      }))
+      .catch(error => {
+        console.error("Error al Registrar Encuesta!:", error);
+      });
+
+  }
+
 </script>
 
 </html>

@@ -27,3 +27,11 @@ class BeanResponse:
         )
         response.status_code = 200
         return response
+
+    def invalidRequest(self, message, detail:str = None) -> jsonify:
+        response = jsonify(
+            {"message": self.MESSAGE_P if not detail else detail,
+             "detail": message}
+        )
+        response.status_code = 400
+        return response

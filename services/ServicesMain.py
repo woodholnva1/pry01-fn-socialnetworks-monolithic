@@ -1,6 +1,10 @@
+from typing import Any
+
 import logging
 from flask import render_template,jsonify
+from pydantic import ValidationError
 
+from models.beans.registerSurveyRequest import RegisterSurveyRequset
 from models.response.beansResponse import BeanResponse
 from repository.RepositoryTable import RepositoryTable
 
@@ -47,3 +51,21 @@ class ServicesMain:
         except Exception as e:
             logger.exception(e.args[0])
             return self.beanResponse.notesperated(e.args[0])
+
+
+    # Endpoint para Registrar Encuesta
+    #
+    def registerSurvey(self,json_request:dict) -> dict:
+        try:
+            # Validacion con Pydantic directa!
+            registerSurveyRequset = RegisterSurveyRequset(**json_request)
+            logger.info(registerSurveyRequset.model_dump_json())
+            return registerSurveyRequset.dict()
+
+        # Except si el json es Invalido
+        except ValidationError as validateJson:
+            return self.beanResponse.invalidRequest("Error al enviar el json!")
+        except Exception as e:
+            logger.exception(e.args[0])
+            return self.beanResponse.notesperated(e.args[0])
+

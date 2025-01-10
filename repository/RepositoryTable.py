@@ -2,7 +2,7 @@ import logging
 from typing import List
 
 from configuration.ConfigDatabase import ConfigDatabase
-from models.Models import RegistroForm, Sexo, RedesSociale, HoraRede
+from models.entity.Models import RegistroForm, Sexo, RedesSociale, HoraRede
 
 logger = logging.getLogger(__name__)
 class RepositoryTable:
