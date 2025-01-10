@@ -1,10 +1,13 @@
-from typing import List, Any
+from typing import List
 from pydantic import BaseModel
 
+class redes(BaseModel):
+    id_red:int = None
+    value:int  = None
 
 class RegisterSurveyRequset(BaseModel):
     mail:str
     years:str
-    sex:str
-    favorite_network:str
-    redes_sociales:List[Any]
+    sex:int
+    favorite_network:int
+    redes_sociales:List[redes]
