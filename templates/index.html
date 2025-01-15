@@ -156,12 +156,12 @@
                 </div>
                 <div class="card-body">
 
-                  <form>
+                  <form id="formularioPrimary">
                     <div class="row">
                       <div class="col-12">
                         <div class="mb-3">
                           <label for="mailInput" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="mailInput" aria-describedby="emailHelp">
+                          <input type="email" class="form-control" id="mailInput" aria-describedby="emailHelp" required>
                           <div id="emailHelp" class="form-text errorMessage">We'll never share your email with anyone
                             else.</div>
                         </div>
@@ -169,7 +169,8 @@
                       <div class="col-3">
                         <div class="mb-3">
                           <label for="years" class="form-label">Rango de edad</label>
-                          <select class="form-select form-select-sm" aria-label="Small select example" id="years">
+                          <select class="form-select form-select-sm" aria-label="Small select example" id="years"
+                            required>
                             <option selected>Open this select menu</option>
                             {%for i in data.years%}
                             <option value="{{i}}">{{i}}</option>
@@ -180,7 +181,8 @@
                       <div class="col-3">
                         <div class="mb-3">
                           <label for="sex" class="form-label">Sexo</label>
-                          <select class="form-select form-select-sm" aria-label="Small select example" id="sex">
+                          <select class="form-select form-select-sm" aria-label="Small select example" id="sex"
+                            required>
                             <option selected>Open this select menu</option>
                             {%for i in data.sexos%}
                             <option value="{{i.id_sexo}}">{{i.name}}</option>
@@ -191,8 +193,8 @@
                       <div class="col-6">
                         <div class="mb-3">
                           <label for="favorite_red" class="form-label">Red social Favorita</label>
-                          <select class="form-select form-select-sm" aria-label="Small select example"
-                            id="favorite_red">
+                          <select class="form-select form-select-sm" aria-label="Small select example" id="favorite_red"
+                            required>
                             <option selected>Open this select menu</option>
                             {%for i in data.redes%}
                             <option value="{{i.id_red_social}}">{{i.name}}</option>
@@ -229,7 +231,7 @@
                       </div>
                       <div class="col-12 mt-3 align-text-top text-center ">
                         <div>
-                          <button type="button" onclick="registrarFormulario()" class="btn btn-outline-success">Enviar
+                          <button type="submit" class="btn btn-outline-success">Enviar
                             Formulario!</button>
                         </div>
                       </div>
@@ -308,6 +310,14 @@
       stopOnFocus: true, // Detiene la temporización del toast si se pasa el ratón por encima
     }).showToast();
   }
+
+
+  // Captar Submit para mejorar Validacion
+  document.getElementById('formularioPrimary').addEventListener('submit', function (event) {
+    event.preventDefault();
+    return registrarFormulario()
+  });
+
   // ---------------------------------------------------
   // Obtener datos del Formulario y Enviar
   // ---------------------------------------------------
