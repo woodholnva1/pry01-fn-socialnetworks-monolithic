@@ -61,6 +61,7 @@ class RepositoryTable:
             logger.exception(f"Error metodo BD GetRedesActiveById() {e.args[0]}")
             return None
 
+    # Registrar Formulario y Relacion!
     def RegisterSurvey(self, registroForm: RegistroForm, array_redes_objet: List[redes]) -> bool:
         try:
             with (self.db as sessionSqlite):

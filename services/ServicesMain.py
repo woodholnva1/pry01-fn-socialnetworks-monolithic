@@ -35,7 +35,7 @@ class ServicesMain:
             return self.beanResponse.notesperated(e.args[0])
 
     # Logica para Verificar si el Correo esta Disponible
-    def verifyMail(self, mail):
+    def verifyMail(self, mail) -> dict:
         try:
             # Si no posee parametro Indicar Error
             if not mail:
@@ -60,8 +60,6 @@ class ServicesMain:
         try:
             # Validacion con Pydantic directa!
             register_survey_request = RegisterSurveyRequset(**json_request)
-            #logger.info(registerSurveyRequset.model_dump_json())
-
             registro_form = RegistroForm()
             registro_form.redPreferida = int(register_survey_request.favorite_network)
             registro_form.edad = register_survey_request.years

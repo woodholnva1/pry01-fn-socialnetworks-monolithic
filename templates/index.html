@@ -16,7 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -296,6 +296,18 @@
   }
 
 
+  function mostrarToast(textoToast, status) {
+    const backgroundColor = status === 200 ? "#28a745" : "#dc3545";
+    const icono = status === 200 ? "✔️" : "❌"; // Icono de éxito o error
+    Toastify({
+      text: `${icono} ${textoToast}`,
+      duration: 3000, // Duración en milisegundos
+      gravity: "top", // Posición del toast (top o bottom)
+      position: "right", // Posición dentro de la ventana (left, center o right)
+      backgroundColor: backgroundColor, // Color de fondo
+      stopOnFocus: true, // Detiene la temporización del toast si se pasa el ratón por encima
+    }).showToast();
+  }
   // ---------------------------------------------------
   // Obtener datos del Formulario y Enviar
   // ---------------------------------------------------
@@ -321,22 +333,39 @@
     // --------------------------------------------------------
     // Enviar Valores al Endpoint Registrar Encuesta!
     // --------------------------------------------------------
-    fetch(URL_VAR + '/RegisterSurvey', {
+    fetch(URL_VAR + '/RegisterSurve1y', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(valoresRequerdiso)
     })
-      .then(response => response.json().then(data => {
-        console.log(data);
-      }))
+      .then(response => {
+        if (response.status !== 200) {
+          // Si es Diferente a 200 retorno esto en la respuesta!
+          return response.json().then(errorData => {
+            throw new Error(`ErrorCodeDiferent ${response.status}: ${errorData.message}`);
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        mostrarToast(data.message, 200); // Respuesta Correcta!
+      })
       .catch(error => {
-        console.error("Error al Registrar Encuesta!:", error);
+        if (error.message.startsWith("ErrorCodeDiferent")) {
+          const status = parseInt(error.message.split(' ')[1]);
+          const message = error.message.split(': ')[1];
+          mostrarToast(message, status);
+        } else {
+          mostrarToast("No se pudo completar la solicitud, ¡Intente nuevamente más tarde!", 500);
+        }
       });
 
   }
 
+
 </script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </html>
