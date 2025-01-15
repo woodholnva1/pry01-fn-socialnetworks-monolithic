@@ -276,7 +276,6 @@
     if (validateEmail(cadenaMail)) {
       fetch(URL_VAR + "/verifyMail?mail=" + cadenaMail)
         .then(response => response.json().then(data => {
-          console.log(data);
           if (response.status === 200) {
             errorMessage.textContent = data.message;
             errorMessage.style.color = "green";
@@ -286,7 +285,6 @@
           }
         }))
         .catch(error => {
-          console.error("Error al verificar el correo:", error);
           errorMessage.textContent = "Error al Verificar el Correo, Intente nuevamente!"
           errorMessage.style.color = "red";
         });
@@ -297,6 +295,7 @@
     }
   }
 
+  LimpiarFormulario();
 
   function mostrarToast(textoToast, status) {
     const backgroundColor = status === 200 ? "#28a745" : "#dc3545";
@@ -318,6 +317,12 @@
     return registrarFormulario()
   });
 
+  // Al cargar la pagina Reiniciar Formulario
+  function LimpiarFormulario() {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('formularioPrimary').reset(); // Limpiar formulario al cargar la página
+    });
+  }
   // ---------------------------------------------------
   // Obtener datos del Formulario y Enviar
   // ---------------------------------------------------
@@ -329,7 +334,6 @@
       value: document.getElementById("{{ red.name }}").value,
     });
     {% endfor %}
-    console.log(arrayRedes);
 
     // Obtener Primera parte del Input Valores
     let valoresRequerdiso = {
@@ -360,7 +364,9 @@
         return response.json();
       })
       .then(data => {
-        mostrarToast(data.message, 200); // Respuesta Correcta!
+        mostrarToast(data.message, 200);
+        document.getElementById('formularioPrimary').reset();
+        errorMessage.textContent = "We'll never share your email with anyone else."
       })
       .catch(error => {
         if (error.message.startsWith("ErrorCodeDiferent")) {
@@ -371,7 +377,6 @@
           mostrarToast("No se pudo completar la solicitud, ¡Intente nuevamente más tarde!", 500);
         }
       });
-
   }
 
 
